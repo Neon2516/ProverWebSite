@@ -1,0 +1,220 @@
+{% extends 'main/header.html' %}
+{% load static %}
+{% block title %}
+Анкета
+{% endblock %}
+{% block content %}
+
+
+<div>
+
+<div class="container">
+    <h1>Оформление ОСАГО</h1>
+    <form method="POST">
+        <div>
+            <a href="javascript:void(0);" id="carLink" onclick="nextSection('car')"><h3>Автомобиль</h3></a>
+            <div id="car" class="form-section active">
+                <div class="forCar">
+                    {% csrf_token %}
+
+                    {{ car.numberAuto }}
+
+                    <select id="firmAuto" name="firmAuto">
+                        <option>Выберите марку</option>
+                        {% for firm in cars.firmAuto.field.queryset %}
+                            <option>{{ firm.Марка }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select id="modelAuto" name="modelAuto">
+                        <option>Выберите модель</option>
+                        {% for model in cars.modelAuto.field.queryset %}
+                            <option>{{ model.Модель }}</option>
+                        {% endfor %}
+                    </select>
+                    {{ car.dateCreate }}
+
+                    {{ car.powerEngine }}
+                    {{ car.seriesNumberSTS }}
+                    {{ car.dateGiveDoc }}
+                    {{ car.numberVIN }}
+
+                    <button  class="next" onclick="nextSection('driver')">Продолжить</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <a href="javascript:void(0);" id="driverLink" onclick="nextSection('driver')"><h3>Водитель</h3></a>
+            <div id="driver" class="form-section">
+                <div class="forCar">
+
+                    {{ driver.fioDriver }}
+                    {{ driver.bithDateDriver }}
+                    {{ driver.seriesNumberLicence }}
+                    {{ driver.dateOfStartDrive }}
+
+                    <button  class="next" onclick="nextSection('owner')">Продолжить</button>
+                </div>
+            </div>
+        </div>
+
+         <div>
+             <a href="javascript:void(0);" id="ownerLink" onclick="nextSection('owner')"><h3>Собственник автомобиля</h3></a>
+            <div id="owner" class="form-section">
+                <div class="forCar">
+                        {{ owner.fioOwner }}
+                        {{ owner.bithDateOwner }}
+                        {{ owner.seriesNumberPassport }}
+                        {{ owner.dateGivePassport }}
+                        {{ owner.adreesReg }}
+                        {{ owner.numberAppart }}
+                        {{ owner.fioCearAuto }}
+                        <button  class="next" onclick="nextSection('contacts')">Продолжить</button>
+                </div>
+            </div>
+        </div>
+
+         <div>
+             <a href="javascript:void(0);" id="contactsLink" onclick="nextSection('contacts')"><h3>Ваши контакты</h3></a>
+            <div id="contacts" class="form-section">
+                <div class="forCar">
+                        {{ contacts.email }}
+                        {{ contacts.numberPhone }}
+
+                        <button  class="next" name="giveSms" id='giveSms' onclick="">Рассчитать</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<script src="{% static 'main/js/script.js' %}"></script>
+
+
+
+
+<script>
+$(document).ready(function() {
+    $('.datepicker').datepicker({
+        dateFormat: "dd.mm.yy" // Установите формат даты, если нужно
+    });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('#firmAuto').change(function() {
+        const selectedFirm = $(this).val();
+        const modelSelect = $('#modelAuto');
+
+        // Очистить предыдущие модели
+        modelSelect.empty();
+        modelSelect.append('<option value="">Выберите модель</option>');
+
+        // Если выбрана марка, отправляем AJAX-запрос
+        if (selectedFirm) {
+            $.ajax({
+                url: '{% url "get_models" %}',  // URL вашего представления
+                data: {
+                    'firm': selectedFirm
+                },
+                success: function(data) {
+                    // Добавляем полученные модели в выпадающий список
+                    data.forEach(function(model) {
+                        modelSelect.append(`<option value="${model}">${model}</option>`);
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+
+<script>
+
+
+
+
+        const savedData = localStorage.getItem('gosNumb');
+        document.getElementById('numberAuto').value = savedData ? savedData : '';
+
+    // Функция для проверки, является ли устройство мобильным
+        function isMobileDevice() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+    const numberAutoInput = document.getElementById('numberAuto');
+
+    // Разрешенные заглавные буквы
+    const allowedLetters = ['А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х'];
+
+    numberAutoInput.addEventListener('keypress', function(event) {
+        if (isMobileDevice()){
+            return;
+        }
+        const charCode = event.charCode;
+        const char = String.fromCharCode(charCode).toUpperCase(); // Преобразуем в заглавную
+
+        // Проверяем, является ли символ разрешенной буквой или цифрой
+        const isAllowedLetter = allowedLetters.includes(char);
+        const isDigit = /[0-9]/.test(char);
+
+        // Если поле пустое, разрешаем вводить только буквы
+        if (this.value.length === 0) {
+            if (!isAllowedLetter) {
+                event.preventDefault();
+            }
+        } else {
+            // Проверяем текущую позицию
+            const position = this.value.replace(/\s/g, '').length; // Учитываем пробелы
+
+            if (position === 0) {
+                if (!isAllowedLetter) {
+                    event.preventDefault();
+                }
+            } else if (position === 1) {
+                if (!isDigit) {
+                    event.preventDefault();
+                }
+            } else if (position >= 1 && position <= 3) {
+                if (!isDigit) {
+                    event.preventDefault();
+                }
+            } else if (position === 4 || position === 5) {
+                if (!isAllowedLetter) {
+                    event.preventDefault();
+                }
+            } else if (position >= 6 && position <= 8) {
+                if (!isDigit) {
+                    event.preventDefault();
+                }
+            }
+        }
+    });
+
+    numberAutoInput.addEventListener('input', function() {
+        // Убираем пробелы и добавляем их на нужные позиции
+        let value = this.value.replace(/\s/g, '');
+
+        if (value.length > 1) {
+            value = value.slice(0, 1) + ' ' + value.slice(1);
+        }
+        if (value.length > 5) {
+            value = value.slice(0, 5) + ' ' + value.slice(5);
+        }
+        if (value.length > 8) {
+            value = value.slice(0, 8) + ' ' + value.slice(8);
+        }
+
+        this.value = value.toUpperCase(); // Делаем все буквы заглавными
+    });
+
+
+
+
+    </script>
+{% endblock %}
+</div>

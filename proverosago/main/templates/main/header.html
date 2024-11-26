@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+    <script>
+        $(document).ready(function()
+        {
+            $('#firmAuto').select2();
+            $('#modelAuto').select2();
+        });
+
+    </script>
+
+</head>
+<body>
+<div class="bot">
+    <!--Это header-->
+    <header>
+        <ul class="uls">
+            <li class="lis"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="lis"><a href="{% url 'about' %}">О нашей организации</a></li>
+            <li class="lis"><a href="{% url 'contact' %}">Контакты</a></li>
+            <li class="lis"><a href="{% url 'information' %}">Как вычисляется ОСАГО</a></li>
+        </ul>
+    </header>
+{% block content %}
+{% endblock %}
+</div>
+    <footer>
+        <div class="footer-container">
+            <div class="leftfooter">
+                <pre>© 2024, OOO «Проверь.ру».
+г. Москва, улица Маршала Тухачевского дом 18.
+                </pre>
+                <p>OOO «Проверь.ру» осуществляет деятельность в сфере IT: сервис предоставляет онлайн-услуги по подбору ОСАГО.</p>
+            </div>
+            <div class="rightfooter">
+                <p>Связь для клиентов</p>
+                <p class="phone"><a href="tel:+79279491141">+7 927 949-11-41</a></p>
+                <p style="font-size: 12px;">Ежедневно с 9:00 до 21:00 по МСК</p>
+                <p style="margin-top: 30px;">Ответим на ваши вопросы</p>
+                <p class="mail"><a href="mailto:nik04.2003@gmail.com">nik04.2003@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

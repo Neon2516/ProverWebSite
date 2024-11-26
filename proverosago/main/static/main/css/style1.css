@@ -1,0 +1,239 @@
+/* Основные стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f3;
+    color: #333;
+}
+
+/* Стили для заголовка */
+header {
+    background: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.uls {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.lis {
+    margin: 0 15px;
+}
+
+.lis a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.lis a:hover {
+    background: #0056b3;
+}
+
+/* Основные контейнеры */
+.begin {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.numb_window {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 200px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+button {
+    padding: 10px 15px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+/* Стили для секции "Как оформить полис" */
+.howtodo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.steps {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 30%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.steps:hover {
+    transform: translateY(-5px);
+}
+
+.comission {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.comission img {
+    width: 100px;
+    margin-left: 20px;
+}
+
+/* Стили для секции "Как снизить стоимость страховки" */
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.content {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.item {
+    min-width: 300px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    flex: 0 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.arrow:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Стили для секции "Что делать при ДТП" */
+.dtp {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.textdtp {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для футера */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.leftfooter,
+.rightfooter {
+    flex: 1;
+    margin: 10px;
+}
+
+.phone,
+.mail {
+    color: #28a745;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .steps-container, .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .steps, .item {
+        width: 90%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .numb_window {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+    }
+}

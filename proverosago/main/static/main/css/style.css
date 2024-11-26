@@ -1,0 +1,964 @@
+/* Код для ввода номера авто */
+.begin {
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    margin-top: 80px;
+}
+
+.begin p {
+    color: rgba(40, 40, 40, 0.6);
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.str {
+    align-items: center; /* Вертикальное выравнивание по центру */
+    display: flex; /* Задаем флекс-контейнер по умолчанию */
+    transition: all 0.3s ease;
+}
+
+.number {
+    height: 150px;
+    width: 650px;
+    margin: 0 auto; /* Центрирование */
+    font-family: Verdana, sans-serif;
+    border: 0;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #FFE773;
+    position: relative;
+    overflow: hidden;
+}
+
+.number label {
+    display: block;
+    padding-left: 20px;
+}
+
+.car {
+    width: 400px;
+    height: 125px;
+    bottom: 0;
+    position: relative;
+    left: 5%;
+    align-self: center; /* Центрируем изображение автомобиля по горизонтали */
+}
+
+.numb_window {
+    margin: 0;
+    height: 50px;
+    align-items: center;
+    border: 1px solid #000;
+    align-items: center;
+    display: flex;
+    border-radius: 15px;
+    background-color: #fff;
+    justify-content: space-between; /* Создает пространство между элементами */
+}
+
+.numb_window img {
+    width: 70px;
+    height: 35px;
+    padding-right: 2px;
+}
+
+.black-bar {
+    height: 100%; /* Полоска будет такой же высоты, как контейнер */
+    width: 1px; /* Ширина полоски */
+    background-color: black; /* Цвет полоски */
+}
+
+.numb_window input {
+    flex-grow: 1;
+    padding: 7px 3px;
+    padding-left: 10px;
+    height: 35px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 120px;
+}
+
+.but {
+    margin-left: 25px;
+    border: 0;
+    border-radius: 15px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    padding: 15px 30px;
+}
+
+.but:hover {
+    background-color: #202020;
+}
+
+.numb_window, .but, .car {
+    transition: all 0.3s ease; /* Плавный переход для этих элементов */
+}
+
+@media (max-width: 700px) {
+    .number {
+        width: 85vw;
+        margin: 0 auto;
+        height: 70vw;
+    }
+    .str {
+        flex-direction: column; /* Устанавливаем вертикальное направление для контейнера */
+        align-items: stretch; /* Растягиваем элементы на всю ширину контейнера */
+        justify-content: center; /* Центрируем элементы по горизонтали */
+    }
+
+    .numb_window {
+        margin-bottom: 10px; /* Отступ между полем ввода и кнопкой */
+        transform: scale(0.9); /* Уменьшаем элемент до 90% */
+    }
+
+    .but {
+        margin: 10px 0; /* Отступы для кнопки */
+        transform: scale(0.9); /* Уменьшаем элемент до 90% */
+    }
+
+    .car {
+        left: 2%;
+        width: 87vw;
+        height: 23vw;
+        margin-top: 0; /* Увеличиваем отступ для изображения автомобиля */
+        align-self: center; /* Центрируем изображение автомобиля по горизонтали */
+        transform: scale(0.9); /* Уменьшаем элемент до 90% */
+    }
+}
+
+/* Код для шагов */
+.howtodo {
+    background-color: #ffe87352;
+    margin-top: 60px;
+    padding-bottom: 60px;
+}
+
+.prew {
+    margin: 0 auto;
+    width: 675px;
+    padding-top: 20px;
+    font-family: Verdana, sans-serif;
+}
+
+
+.steps {
+    flex: 0 0 auto; /* Это предотвратит сжатие элемента */
+    border: 0;
+    border-radius: 15px;
+    background-color: #fff;
+    display: inline-block;
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.step1, .step2, .step3 {
+    width: 220px;
+    height: 250px;
+}
+
+.step1 h5, .step2 h5, .step3 h5 {
+    border: 0;
+    background-color: #000;
+    border-radius: 15px;
+    color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 50px;
+
+}
+
+.steps-container {
+    display: flex;
+    margin: 0 auto;
+    width: 700px;
+}
+
+.image1 {
+    width: 100px;
+    height: 100px;
+    padding-left: 50px;
+}
+
+.image2 {
+    width: 150px;
+    height: 100px;
+    padding-left: 30px;
+}
+
+.image3 {
+    width: 150px;
+    height: 100px;
+    padding-left: 20px;
+}
+
+.comission {
+    margin: 0 auto;
+    padding-top: 20px;
+    font-family: Verdana, sans-serif;
+
+    border: 0;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-top: 40px;
+    padding-left: 15px;
+    display: flex;
+    overflow: visible;
+    height: 150x;
+    width: 675px;
+}
+
+.comission > div {
+    display: inline-block;
+}
+
+.image4 {
+    width: 225px;
+    height: 200px;
+
+}
+
+@media (max-width: 1000px) {
+    .image4 {
+        width: 25vw;
+        height: 25vw;
+    }
+    .prew {
+        width: 70vw;
+    }
+
+    .comission {
+        width: 80vw;
+    }
+
+    .howtodo {
+        width: 100%;
+    }
+
+    .steps-container {
+        flex-direction: row; /* Оставляем горизонтальное направление */
+        overflow-x: auto; /* Включаем горизонтальную прокрутку */
+        white-space: nowrap; /* Запрещаем перенос строк */
+        width: 73vw;
+        margin: 0 auto;
+    }
+
+
+
+}
+
+/* Навигация */
+.uls {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    z-index: 1000;
+    border: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(184, 184, 184, 0.151);
+    text-align: center;
+
+    justify-content: center;
+    display: flex;
+}
+
+
+.lis {
+    float: left;
+    text-align: center;
+}
+
+.lis button {
+    border: 1px solid rgba(184, 184, 184, 0.151);
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #e6e6fa;
+}
+
+.lis button:hover {
+    background-color: #d1d1f8;
+}
+
+.lis a, .lis button {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+}
+
+.lis a:hover {
+    color: #a4a4c0;
+
+}
+
+@media (max-width: 600px) {
+     .uls {
+        justify-content: center; /* Центрируем элементы по горизонтали */
+    }
+
+    .lis {
+        margin: 0 3px; /* Уменьшаем отступы между элементами */
+    }
+
+    .uls a {
+        font-size: 14px; /* Уменьшаем размер шрифта для мобильных устройств */
+        padding: 6px 10px; /* Уменьшаем внутренние отступы */
+    }
+
+    .uls a:hover {
+        background-color: #f0f0f0; /* Изменяем фон при наведении */
+        border-radius: 5px; /* Скругляем углы */
+    }
+}
+
+
+/* Это footer */
+footer {
+    display: flex;
+    justify-content: center; /* Центрируем содержимое футера */
+    align-items: flex-start;
+    background-color: #ffe8739d;
+    font-family: Verdana, sans-serif;
+    padding: 30px 20px; /* Добавим отступы по бокам */
+}
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Ограничим максимальную ширину футера */
+    justify-content: space-between; /* Распределяем пространство между элементами */
+}
+
+.leftfooter, .rightfooter {
+    flex: 1; /* Задаем равную ширину для обоих блоков */
+    margin: 0 auto; /* Отступы между блоками */
+}
+
+.leftfooter p {
+    font-size: 12px;
+}
+.rightfooter {
+    text-align: right;
+}
+
+.phone, .mail {
+    font-weight: 250;
+    font-size: 17px;
+}
+
+.phone a, .mail a {
+    text-decoration: none;
+    color: #000;
+}
+
+.phone a:hover, .mail a:hover {
+    color: #3d3d3d;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1000px) {
+    .footer-container {
+        flex-direction: column; /* Изменяем направление на колонку */
+        align-items: center; /* Центрируем элементы */
+        width: 100%;
+    }
+    .leftfooter, .rightfooter {
+        text-align: left;
+        width: 100%; /* Устанавливаем ширину 100% */
+        margin: 10px 0; /* Отступы между блоками */
+    }
+}
+
+
+
+/* Слайдер */
+.slider {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.content {
+    display: flex;
+    transition: transform 0.3s ease;
+    font-family: Verdana, sans-serif;
+}
+
+.item pre {
+    font-size: 13.2px;
+    font-family: Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+.item {
+    border: 0;
+    background-color:#ffe87352;
+    border-radius: 15px;
+    color: #000;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 30px;
+}
+
+.item h4 {
+    font-family: Verdana, sans-serif;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color:#fce369;
+    color: #000;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.btn1 {
+    right: 6px;
+}
+
+.btn2 {
+    left: 6px;
+    display: none;
+}
+
+.arrow:hover {
+    transform: scale(1.25) translateY(-25%);
+}
+
+.page3 {
+    font-family: Verdana, sans-serif;
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 675px;
+}
+
+
+
+
+.dtp {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.textdtp {
+
+    margin: 30px;
+    border: 0;
+    background-color: #e6e6fa;
+    border-radius: 15px;
+    color: #000;
+
+}
+
+.textdtp pre {
+    padding: 10px 10px;
+    font-size: 13.2px;
+    font-family: Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+.textdtp h4 {
+    font-family: Verdana, sans-serif;
+    padding-left: 10px;
+}
+
+
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    transition: top 0.3s;
+  }
+
+body.sticky-nav-active {
+    padding-top: 50px;
+  }
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+}
+
+@media (max-width: 1000px) {
+    .page3{
+        width: 50vw;
+    }
+
+    .dtp {
+        flex-direction: row; /* Оставляем горизонтальное направление */
+        overflow-x: auto; /* Включаем горизонтальную прокрутку */
+        white-space: nowrap; /* Запрещаем перенос строк */
+        width: 80vw;
+    }
+
+    .slider {
+        flex-direction: row; /* Оставляем горизонтальное направление */
+        overflow-x: auto; /* Включаем горизонтальную прокрутку */
+        white-space: nowrap; /* Запрещаем перенос строк */
+        width: 80vw;
+    }
+    .btn1 {
+        display: none;
+    }
+}
+
+/* Анкета */
+
+
+
+.forCar {
+    flex-wrap: wrap;
+    border: none;
+    align-items: center;
+    display: flex;
+    border-radius: 15px;
+    padding: 0;
+
+
+    padding: 15px;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.carIn {
+    font-family: Verdana, sans-serif;
+    border: 1px solid #ccc; /* Стили для input */
+    border-radius: 15px; /* Скругление углов для input */
+    padding: 15px; /* Внутренние отступы для input */
+    flex: 1 1 calc(33.33% - 10px); /* Заставляет input занимать 1/3 ширины контейнера */
+    box-sizing: border-box; /* Учитывает отступы и границы в общей ширине */
+}
+
+.next {
+    font-family: Verdana, sans-serif;
+    border: 1px solid rgba(184, 184, 184, 0.151);
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #e6e6fa;
+    padding: 15px;
+}
+
+.next:hover {
+    background-color: #d1d1f8;
+}
+
+.container {
+
+    font-family: Verdana, sans-serif;
+    flex-direction: column; /* Устанавливаем вертикальную ориентацию */
+    min-height: 60vh;
+    margin: 0 auto;
+    width: 675px;
+    border: 1px solid rgba(184, 184, 184, 0.151);
+    border-radius: 15px;
+    background-color: #ffe87352;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.container a {
+    text-decoration: none;
+    color: #000;
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 92.8%;
+    }
+}
+
+/* Select */
+/* Стили для контейнера Select2 */
+.select2-container--default .select2-selection--single {
+    font-family: Verdana, sans-serif; /* Шрифт */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 15px; /* Скругление углов */
+    padding: 24px; /* Внутренние отступы */
+    display: flex; /* Используем flexbox */
+    align-items: center; /* Центрирование содержимого по вертикали */
+    box-sizing: border-box; /* Учитывает отступы и границы в общей ширине */
+}
+
+/* Стили для отображаемого текста в Select2 */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 1.5; /* Выравнивание текста по центру */
+    padding: 0; /* Убираем внутренние отступы */
+}
+
+/* Стили для стрелки выпадающего списка */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 40px; /* Высота стрелки */
+    right: 10px; /* Позиция стрелки */
+}
+
+/* Установка ширины контейнера */
+.select2-container {
+    flex: 1 1 calc(33.33% - 10px); /* Заставляет контейнер занимать 1/3 ширины родителя */
+}
+
+
+/* Результаты */
+.modal {
+    width: 320px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень */
+    position: fixed;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    z-index: 2;
+
+}
+
+.modal h1 {
+    font-size: 24px; /* Увеличенный размер заголовка */
+    margin-bottom: 15px; /* Отступ снизу */
+    color: #333; /* Цвет текста */
+}
+
+.modal input[type="text"] {
+    width: calc(100% - 20px); /* Полная ширина с учетом отступов */
+    padding: 10px; /* Отступ внутри поля */
+    margin-bottom: 15px; /* Отступ снизу */
+    border: 1px solid #ccc; /* Рамка */
+    border-radius: 4px; /* Закругленные углы */
+    font-size: 16px; /* Размер шрифта */
+}
+
+.btn {
+    width: 100%; /* Полная ширина кнопок */
+    padding: 10px; /* Отступ внутри кнопки */
+    background-color: #007BFF; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Без рамки */
+    border-radius: 4px; /* Закругленные углы */
+    cursor: pointer; /* Указатель при наведении */
+    font-size: 16px; /* Размер шрифта */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
+
+.modal-close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    top: -15px;
+    right: -15px;
+}
+
+
+
+.hidden {
+    display: none;
+}
+.hid{
+ display: block;
+}
+.backhid {
+    background-color: rgba(0, 0, 0, 0);
+    position: static;
+}
+
+.bot {
+    display: grid;
+    min-height: 75vh; /* Устанавливает минимальную высоту на 100% высоты окна */
+    margin: 0; /* Убирает отступы */
+    padding: 0;
+}
+
+.content2 {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Серый фон */
+    position: fixed; /* Зафиксировать позицию на экране */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+
+.table-container {
+    max-width: 800px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирует контейнер */
+    background-color: white; /* Белый фон для контейнера */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта подъема */
+    padding: 20px; /* Отступы внутри контейнера */
+}
+
+.table-container h1 {
+    text-align: center; /* Центрирует заголовок */
+    color: #333; /* Темный цвет текста */
+}
+
+.table-container table {
+    width: 100%; /* Ширина таблицы на 100% от контейнера */
+    border-collapse: collapse; /* Убирает двойные границы */
+    margin-top: 20px; /* Отступ сверху от заголовка */
+}
+
+@media (max-width: 1000px) {
+    .table-container {
+        width: 90%; /* Ширина таблицы на 100% от контейнера */
+    }
+}
+
+.table-container th,.table-container td {
+    padding: 12px; /* Отступы внутри ячеек */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+.table-container th {
+    background-color: #202020; /* Зеленый фон для заголовков */
+    color: white; /* Белый цвет текста для заголовков */
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #f2f2f2; /* Светло-серый фон для четных строк */
+}
+
+.table-container tr:hover {
+    background-color: #ddd; /* Цвет фона при наведении на строку */
+    cursor: pointer; /* Курсор указывает на интерактивность */
+}
+
+/* About */
+
+.about {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.about h2 {
+    font-family: Verdana, sans-serif;
+    color: #333;
+    font-size: 24px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.about p {
+    font-family: Verdana, sans-serif;
+    color: #555;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Contacts */
+.contact-container {
+    background-color: #e6e6fa; /* Цвет фона контейнера */
+    border-radius: 8px; /* Скругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень контейнера */
+    padding: 20px; /* Внутренние отступы контейнера */
+    margin: auto;
+    max-width: 600px; /* Максимальная ширина контейнера */
+    margin-top: 40px; /* Центрирование контейнера */
+    margin-bottom: 40px
+
+}
+
+.contact-container h1 {
+    font-family: Verdana, sans-serif;
+    color: black; /* Цвет заголовка */
+    font-size: 28px; /* Размер заголовка */
+}
+
+.contact-container h2 {
+    font-family: Verdana, sans-serif;
+    color: black; /* Цвет подзаголовков */
+    font-size: 22px; /* Размер подзаголовков */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.contact-container p {
+    font-family: Verdana, sans-serif;
+    color: black; /* Цвет основного текста */
+    line-height: 1.6; /* Межстрочный интервал */
+}
+
+.contact-container ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем внутренние отступы списка */
+}
+
+.contact-container li {
+    font-family: Verdana, sans-serif;
+    margin-bottom: 10px; /* Отступ между элементами списка */
+}
+
+.contact-container form {
+    margin-top: 20px; /* Отступ сверху формы */
+}
+
+.contact-container label {
+    font-family: Verdana, sans-serif;
+    display: block; /* Отображаем метки как блочные элементы */
+    margin-bottom: 5px; /* Отступ снизу меток */
+}
+
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea {
+    font-family: Verdana, sans-serif;
+    width: 97%; /* Ширина полей ввода на всю ширину контейнера */
+    padding: 10px; /* Внутренние отступы полей ввода */
+    margin-bottom: 15px; /* Отступ снизу полей ввода */
+    border: 1px solid black; /* Граница полей ввода */
+    border-radius: 4px; /* Скругление углов полей ввода */
+}
+
+.contact-container button {
+    font-family: Verdana, sans-serif;
+    background-color:black; /* Цвет фона кнопки */
+    color: #e6e6fa; /* Цвет текста кнопки */
+    border: none; /* Убираем границу кнопки */
+    padding: 10px 15px; /* Внутренние отступы кнопки */
+    border-radius: 4px; /* Скругление углов кнопки */
+    cursor: pointer; /* Указатель при наведении на кнопку */
+}
+
+.contact-container button:hover {
+    background-color: #8a7f8e; /* Цвет фона кнопки при наведении */
+}
+
+/* information */
+.container1 h1, .container1 h2 {
+    font-family: Verdana, sans-serif;
+    color: #333;
+}
+.container1 {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container1 ul {
+    list-style-type: none;
+    padding: 0;
+}
+.container1 ul li {
+    font-family: Verdana, sans-serif;
+    background: #e7ffe7;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.container1 table {
+    font-family: Verdana, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.container1 table, .container1 th, .container1 td {
+    font-family: Verdana, sans-serif;
+    border: 1px solid #ccc;
+}
+.container1 th, .container1 td {
+    font-family: Verdana, sans-serif;
+    padding: 10px;
+    text-align: left;
+}
+.container1 th {
+    font-family: Verdana, sans-serif;
+    background-color: #f2f2f2;
+}
+.highlight {
+    font-family: Verdana, sans-serif;
+    color: #008000; /* Зеленый цвет */
+    font-weight: bold;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .container1 {
+        padding: 15px;
+    }
+
+    .container1 h1 {
+        font-size: 1.5em;
+    }
+
+    .container1 h2 {
+        font-size: 1.3em;
+    }
+
+    .container1 ul li {
+        font-size: 0.9em;
+    }
+
+    .container1 th, .container1 td {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container1 {
+        padding: 10px;
+    }
+
+    .container1 h1 {
+        font-size: 1.3em;
+    }
+
+    .container1 h2 {
+        font-size: 1.2em;
+    }
+
+    .container1 ul li {
+        font-size: 0.8em;
+    }
+
+    .container1 th, .container1 td {
+        font-size: 0.8em;
+    }
+}

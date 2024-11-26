@@ -1,0 +1,259 @@
+{% extends 'main/header.html' %}
+{% load static %}
+{% block title %}
+Страхование ОСАГО
+{% endblock %}
+{% block content %}
+    <!--Этот контейнер позволяет ввести номер авто, на который нужно оформить ОСАГО-->
+    <div class="begin">
+        <h1>Получить цену ОСАГО</h1>
+        <p>Сравненить стоимость цен ОСАГО на авто в страховых компаниях</p>
+    </div>
+    <div class="number">
+        <label for="gos_numb">Для получения цен введите госномер автомобиля</label><br>
+        <div class="str">
+            <div class="numb_window">
+                <input type="text" id="gos_numb" name="gos_numb" placeholder="A 000 AA 00" maxlength="12" required>
+                <div class="black-bar"></div>
+                <img src="{% static 'main/images/flagRus.png'%}" alt="">
+            </div>
+            <button class="but" onclick="saveButton()">Далее</button>
+            <img class="car" src="{% static 'main/images/car.png'%}" alt="Автомобиль">
+        </div>
+    </div>
+    <!--Этот контейнер дает информацию о том, как бысто делается рассчет-->
+    <div class="howtodo">
+        <div class="prew">
+            <h2>Как оформить полис за 5 минут</h2>
+            <p>Вы потратите немного времени, зато сэкономите достаточно</p>
+        </div>
+        <div class="steps-container">
+            <div class="steps step1">
+                <h5>Шаг 1</h5>
+                <pre class="prep">
+Введите данные авто и
+водителей
+                </pre>
+                <img class="image1" src="{% static 'main/images/tasks.png'%}" alt="">
+            </div>
+            <div  class="steps step2">
+                <h5>Шаг 2</h5>
+                <pre class="prep">
+Сравните цены и
+выберите лучшую</pre>
+                <img class="image2" src="{% static 'main/images/schet.png'%}" alt="">
+            </div>
+            <div class="steps step3">
+                <h5>Шаг 3</h5>
+                <pre class="prep">
+Перейдите на сайт и
+оплатите полис</pre>
+                <img class="image3" src="{% static 'main/images/site.png'%}" alt="">
+            </div>
+        </div>
+        <div class="comission">
+            <div>
+                <h2>Без комиссии</h2>
+                <p>Мы даем возможность сравнить цены в страховых компаниях, без скрытых комиссий и переплат</p>
+            </div>
+            <img class="image4" src="{% static 'main/images/care.png'%}" alt="">
+        </div>
+    </div>
+
+    <div>
+        <h2 class="page3">Как снизить стоимость страховки на авто</h2>
+        <div class="slider">
+            <div class="content">
+                <div class="item">
+                    <h4>Изучайте предложения</h4>
+                    <pre>У разных страховых компаний цена полиса
+может отличаться за счет разницы тарифов.
+                    </pre>
+                </div>
+                <div class="item">
+                    <h4>Водите аккуратно</h4>
+                    <pre>Коэффициент безаварийной езды (КБМ)
+напрямую влияет на стоимость ОСАГО. Чем
+дольше вы ездите без аварий, тем больше скидка
+                    </pre>
+                </div>
+                <div class="item">
+                    <h4>Продлевайте полис заранее</h4>
+                    <pre>Страховые снижают цены клиентам, вовремя
+продлевающим страховку. При этом
+некоторые СК предлагают выгодную цену за
+переход к ним - изучите предложения
+заранее
+                    </pre>
+                </div>
+                <div class="item">
+                    <h4>Укажите чисто водителей</h4>
+                    <pre>Если машину водят несколько человек,
+оформите страховку с ограниченным списком
+водителей - это выйдет дешевле, Чем
+"безлимитный" полис
+                    </pre>
+                </div>
+                <div class="item">
+                    <h4>Учавствуйте в акциях</h4>
+                    <pre>Во многих СК регулярно проходят акции,
+благодаря которым вы сможете приобрести
+ОСАГО по более выгодной цене
+                    </pre>
+                </div>
+            </div>
+            <button class="arrow btn1" id="next">►</button>
+            <button class="arrow btn2" id="prev">◄</button>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="page3">Что делать при ДТП</h2>
+        <div class="dtp">
+            <div class="textdtp">
+                <h4>Оцените ситуацию</h4>
+                <pre>Убедитесь, что вы и все участники ДТП не
+пострадали. Запросите у дрегого водителя
+полис ОСАГО и проверьте его подлинность
+через базу РСА - это можно сделать прямо на
+месте с помощью смартфона.
+                </pre>
+            </div>
+            <div class="textdtp">
+                <h4>Позвоните в страховую</h4>
+                <pre>Сообщите о ДТП в страховую компанию.
+Оператора расскажут, что вам нужно делать
+на месте и какие документы собрать для
+предоставления в страховую.
+                </pre>
+            </div>
+            <div class="textdtp">
+                <h4>Заполните документы</h4>
+                <pre>Если ваш страховой случай подходит под
+условия европротокола, заполните
+извещение о ДТП вместе с другим водителем.
+Будьте внимательны при внесении данных -
+от этого зависит, получите ли вы
+возмещение.
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'main/js/script.js'%}"></script>
+
+<script>
+    // Функция для показа автомобиля
+    function showCar() {
+        const car = document.querySelector('.car');
+        car.classList.add('visible'); // Добавляем класс для анимации
+    }
+
+    // Запускаем анимацию через 1 секунду после загрузки страницы
+    window.onload = function() {
+        setTimeout(showCar, 1000); // Задержка в 1 секунду
+    };
+</script>
+
+
+    <script>
+
+// Функция для проверки, является ли устройство мобильным
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+const numberAutoInput = document.getElementById('gos_numb');
+
+    // Разрешенные заглавные буквы
+    const allowedLetters = ['А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х'];
+
+    numberAutoInput.addEventListener('keypress', function(event) {
+
+        if (isMobileDevice()){
+            return;
+        }
+        const charCode = event.charCode;
+        const char = String.fromCharCode(charCode).toUpperCase(); // Преобразуем в заглавную
+
+        // Проверяем, является ли символ разрешенной буквой или цифрой
+        const isAllowedLetter = allowedLetters.includes(char);
+        const isDigit = /[0-9]/.test(char);
+
+        // Если поле пустое, разрешаем вводить только буквы
+        if (this.value.length === 0) {
+            if (!isAllowedLetter) {
+                event.preventDefault();
+            }
+        } else {
+            // Проверяем текущую позицию
+            const position = this.value.replace(/\s/g, '').length; // Учитываем пробелы
+
+            if (position === 0) {
+                if (!isAllowedLetter) {
+                    event.preventDefault();
+                }
+            } else if (position === 1) {
+                if (!isDigit) {
+                    event.preventDefault();
+                }
+            } else if (position >= 1 && position <= 3) {
+                if (!isDigit) {
+                    event.preventDefault();
+                }
+            } else if (position === 4 || position === 5) {
+                if (!isAllowedLetter) {
+                    event.preventDefault();
+                }
+            } else if (position >= 6 && position <= 8) {
+                if (!isDigit) {
+                    event.preventDefault();
+                }
+            }
+        }
+    });
+
+    numberAutoInput.addEventListener('input', function() {
+        // Убираем пробелы и добавляем их на нужные позиции
+        let value = this.value.replace(/\s/g, '');
+
+        if (value.length > 1) {
+            value = value.slice(0, 1) + ' ' + value.slice(1);
+        }
+        if (value.length > 5) {
+            value = value.slice(0, 5) + ' ' + value.slice(5);
+        }
+        if (value.length > 8) {
+            value = value.slice(0, 8) + ' ' + value.slice(8);
+        }
+
+        this.value = value.toUpperCase(); // Делаем все буквы заглавными
+    });
+
+document.getElementById('saveButton').addEventListener('click', function() {
+    const inputData = document.getElementById('gos_numb').value;
+    localStorage.setItem('gosNumb', inputData);
+});
+
+
+
+    </script>
+{% endblock %}
+<!--    <footer>-->
+<!--        <div class="leftfooter">-->
+<!--            <pre>© 2024, OOO «Проверь.ру».-->
+<!--г. Москва, улица Маршала Тухачевского дом 18.-->
+<!--            </pre>-->
+<!--            <pre>OOO «Проверь.ру» осуществляет деятельность в сфере IT: сервис предоставляет онлайн-услуги по подбору ОСАГО.</pre>-->
+<!--        </div>-->
+<!--        <div class="rightfooter">-->
+<!--            <p>Связь для клиентов</p>-->
+<!--            <p class="phone"><a href="tel:+79279491141">8 927 949 11 41</a></p>-->
+<!--            <p style="font-size: 12px;">Ежедневно с 9:00 до 21:00 по МСК</p>-->
+<!--            <p style="margin-top: 30px;">Ответим на ваши вопросы</p>-->
+<!--            <p class="mail"><a href="mailto:nik04.2003@gmail.com">nik04.2003@gmail.com</a></p>-->
+<!--        </div>-->
+<!--    </footer>-->
+
+<!--</body>-->
+<!--</html>-->

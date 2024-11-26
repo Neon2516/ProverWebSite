@@ -1,0 +1,38 @@
+{% extends 'main/header.html' %}
+{% load static %}
+{% block title %}
+Результаты
+{% endblock %}
+{% block content %}
+<div class="{{ m2 }}">
+<div id="mask" class="mask">
+    <div class="modal {{ m1 }}" id="modal">
+       <h1>Впишите код из СМС</h1>
+       <form id="modalForm" method="POST" onsubmit="return handleSubmit(event);">
+          {% csrf_token %}
+          <input type="text" name="smsInput" id="smsInput" placeholder="SMS">
+          <button class="btn" type="submit" name="calculate" id="calculate">Отправить код</button>
+       </form>
+    </div>
+
+    <div class="table-container {{ m3 }}">
+        <h1>Список компаний и их цен</h1>
+        <table border="1">
+            <tr>
+                <th>Название компании</th>
+                <th>Цена</th>
+            </tr>
+            {% for company, price in data.items %}
+            <tr>
+                <td>{{ company }}</td>
+                <td>{{ price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<script src="{% static 'anketa/js/script.js'%}"></script>
+
+
+</div>
+{% endblock %}
